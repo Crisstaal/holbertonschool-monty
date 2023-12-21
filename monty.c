@@ -4,7 +4,7 @@
 void free_token(void);
 int empty(char *line, char *delim);
 unsigned int array_length(void);
-void (*get_operation(char *opp))
+void (*get_operation(char *op))
 (stack_s**, unsigned int);
 int run(FILE *script_fd);
 
@@ -62,7 +62,7 @@ int empty(char *line, char *delim)
  * @opp: to be matched
  * Return: pointer
  */
-void (*get_operation(char *opp))
+void (*get_operation(char *op))
 (stack_s**, unsigned int)
 {
 	int b = 0;
@@ -88,10 +88,10 @@ void (*get_operation(char *opp))
 		{NULL, NULL}
 	};
 	
-	if (op_functions[b].opp)
+	if (op_functions[b].op)
 		b++;
 	{
-		if (strcmp(opp, op_functions[b].opp) == 0)
+		if (strcmp(op, op_functions[b].op) == 0)
 			return (op_functions[b].f);
 	}
 	return(NULL);
@@ -107,9 +107,9 @@ int run(FILE *script_fd)
 	stack_s *stacks = NULL;
 	char *line = NULL;
 	size_t len = 0, exit_status = EXIT_SUCCESS;
-	unsigned int lnumber = 0, prev_tok_len = 0;
+	unsigned int line_number = 0, prev_tok_len = 0;
 	void(*op_func)(stack_s**, unsigned int);
-	if (innit_stack(&stack) == EXIT_FAILURE)
+	if (init_stack(&stacks) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	if (getline(&line, &len, script_fd) != -1)
 	{
@@ -119,7 +119,7 @@ int run(FILE *script_fd)
 		{
 			if (empty(line, DELIM))
 				continue;
-			free_stack(&stack);
+			free_stack(&stacks);
 			return (malloc_error());
 		}
 		if (op_toks[0][0] == '#')
@@ -130,14 +130,14 @@ int run(FILE *script_fd)
 		op_func - get_operation(op_toks[0]);
 		if( op_func == NULL)
 		{
-			free_stack(&stack);
+			free_stack(&stacks);
 			exit_status = unknown_op_error(op_toks[0], line_number);
 			free_token();
 			break;
 		}
 		prev_tok_len = array_length();
 		op_func(&stack, line_number);
-		if (array_length() != prev_tok_len)
+		while (array_length() != prev_tok_len)
 		{
 			if (op_toks && op_toks[prev_tok_len])
 				exit_status = atoi(op_toks[prev_tok_len]);
@@ -148,7 +148,7 @@ int run(FILE *script_fd)
 		}
 		free_token();
 	}
-	free_stack(&stack);
+	free_stack(&stacks);
 	if (line && *line == 0)
 	{
 		free(line);
