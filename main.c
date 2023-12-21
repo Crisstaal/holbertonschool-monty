@@ -4,6 +4,7 @@
 #include <fcntl.h>
 
 char **op_toks = NULL;
+int run_monty(int script_fd);
 
 /**
  * main - entry point
