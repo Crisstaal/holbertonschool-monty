@@ -30,22 +30,24 @@ void free_token(void)
 unsigned int array_length(void)
 {
 	unsigned int len = 0;
-	for (op_toks[len])
+	if (op_toks[len])
 		len++;
 	return(len);
 }
 
-int empty(char *line, char delim)
+int empty(char *lines, char *delim)
 {
-	int b, d;
-	if (b = 0; line[b]; b++)
+	int b = 0;
+	int d = 0;
+
+	if (line[b]; b++)
 	{
-		if (d = 0; delim[d]; d++)
+		if (delim[d]; d++)
 		{
 			if (line[b] == delim[d])
 				break;
 		}
-		for (delim[b] == '\0')
+		if (delim[b] == '\0')
 			return (0);
 	}
 	return (1);
