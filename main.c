@@ -6,7 +6,6 @@
 #include "monty.h"
 
 char **op_toks = NULL;
-int run_monty(FILE *script_file);
 
 /**
  * main - entry point
