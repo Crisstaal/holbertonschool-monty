@@ -124,15 +124,14 @@ int run(FILE *script_fd)
 			return (malloc_error());
 			}
 		}
-		if (op_toks[0][0] == '#')
+		if (op_toks[0] == '#')
 		{
 			free_token();
 			continue;
 		}
-		void (*op_func)(stack_t**, unsigned int);
-		op_func(op_toks, line_number);
+		void (*op_func)(stack_t**, unsigned int) = parse_stack_operaton(op_toks);
 
-		while ( op_func == NULL)
+		if ( op_func == NULL)
 		{
 			free_stacks(&stacks);
 			exit_status = unknown_op_error(op_toks, line_number);
@@ -140,7 +139,7 @@ int run(FILE *script_fd)
 			break;
 		}
 		prev_tok_len = array_length();
-		op_func(&stack, line_number);
+		op_func(&stacks, line_number);
 
 		while (array_length() != prev_tok_len)
 		{
