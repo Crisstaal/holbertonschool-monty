@@ -153,7 +153,7 @@ char *word(char *str, char *delim)
 	int pending = 0;
 	int b = 0;
 
-	if (*(str + b))
+	while (*(str + b))
 	{
 		if (delim[(int)str[b]])
 			pending = 1;
