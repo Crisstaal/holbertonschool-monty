@@ -143,12 +143,12 @@ int run(FILE *script_fd)
 			break;
 		}
 		prev_tok_len = array_length();
-		op_func(stacks, line_number);
+		op_func(stack_t, line_number);
 
 		while (array_length() != prev_tok_len)
 		{
 			if (op_toks && op_toks[prev_tok_len])
-				exit_status = atoi(op_toks[prev_tok_len], &endptr , 10);
+				exit_status = atoi(*op_toks[prev_tok_len], &endptr , 10);
 			else
 				exit_status = EXIT_FAILURE;
 			free_token();
