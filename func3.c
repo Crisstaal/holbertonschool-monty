@@ -6,7 +6,7 @@
  * @line_number: current line
  */
 
-void monty_nop(stack_s **stacks, unsigned int line_number)
+void monty_nop(stack_t **stacks, unsigned int line_number)
 {
 	(void)stacks;
 	(void)line_number;
@@ -17,7 +17,7 @@ void monty_nop(stack_s **stacks, unsigned int line_number)
  * @line_number: current line
  */
 
-void monty_pchar(stack_s **stacks, unsigned int line_number)
+void monty_pchar(stack_t **stacks, unsigned int line_number)
 {
 	if ((*stacks)->next == NULL)
 		{
@@ -38,9 +38,9 @@ void monty_pchar(stack_s **stacks, unsigned int line_number)
  * @line_number: current line
  */
 
-void monty_pstr(stack_s **stacks, unsigned int line_number)
+void monty_pstr(stack_t **stacks, unsigned int line_number)
 {
-	stack_s *tmp = (*stacks)->next;
+	stack_t *tmp = (*stacks)->next;
 
 	if (tmp && tmp->n != 0 && (tmp->n > 0 && tmp->n <= 127))
 	{

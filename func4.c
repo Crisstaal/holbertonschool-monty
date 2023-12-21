@@ -4,9 +4,9 @@
  * @stacks: pointer
  * @line_number: current line
  */
-void monty_rotl(stack_s **stacks, unsigned int line_number)
+void monty_rotl(stack_t **stacks, unsigned int line_number)
 {
-	stack_s *top, *bott;
+	stack_t *top, *bott;
 
 	if ((*stacks)->next == NULL || (*stacks)->next->next == NULL)
 		return;
@@ -32,9 +32,9 @@ void monty_rotl(stack_s **stacks, unsigned int line_number)
  * @line_number: current line
  */
 
-void monty_rotr(stack_s **stacks, unsigned int line_number)
+void monty_rotr(stack_t **stacks, unsigned int line_number)
 {
-	stack_s *top, *bott;
+	stack_t *top, *bott;
 
 	if ((*stacks)->next == NULL || (*stacks)->next->next == NULL)
 		return;
@@ -56,7 +56,7 @@ void monty_rotr(stack_s **stacks, unsigned int line_number)
  * @stacks: pointer
  * @line_number: current lime
  */
-void monty_stack(stack_s **stacks, unsigned int line_number)
+void monty_stack(stack_t **stacks, unsigned int line_number)
 {
 	(*stacks)->n = STACK;
 	(void)line_number;
@@ -69,7 +69,7 @@ void monty_stack(stack_s **stacks, unsigned int line_number)
  * @line_number: current line
  */
 
-void monty_queue(stack_s **stacks, unsigned int line_number)
+void monty_queue(stack_t **stacks, unsigned int line_number)
 {
 	(*stacks)->n = QUEUE;
 	(void)line_number;

@@ -1,18 +1,18 @@
 #include "monty.h"
 #include <string.h>
 
-void free_stacks(stack_s **stacks);
-int stacks(stack_s **stacks);
-int checks_stacks(stack_s *stacks);
+void free_stacks(stack_t **stacks);
+int stacks(stack_t **stacks);
+int checks_stacks(stack_t *stacks);
 
 /**
  * free_stracks - frees the stack
  * @stack: pointer
  */
 
-void free_stacks(stack_s **stacks)
+void free_stacks(stack_t **stacks)
 {
-	stacks_s *tmp = *stacks;
+	stacks_t *tmp = *stacks;
 	if (*stacks)
 	{
 		tmp = (*stacks)->next;
@@ -28,10 +28,10 @@ void free_stacks(stack_s **stacks)
  * Return: if error EXIT_FAILURE
  */
 
-int stacks(stacks_s **stacks)
+int stacks(stacks_t **stacks)
 {
-	stacks_s *s;
-	s = malloc(sizeof(stacks_s));
+	stacks_t *s;
+	s = malloc(sizeof(stacks_t));
 	if (s == NULL)
 		return (malloc_error());
 	s->n = STACKS;

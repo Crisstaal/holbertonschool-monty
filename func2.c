@@ -6,7 +6,7 @@
  * @line_number: current line
  */
 
-void monty_add(stack_s **stacks, unsigned int line_number)
+void monty_add(stack_t **stacks, unsigned int line_number)
 {
 	if ((*stacks)->next == NULL || (*stacks)->next->next == NULL)
 	{
@@ -24,7 +24,7 @@ void monty_add(stack_s **stacks, unsigned int line_number)
  * @line_number: current line
  */
 
-void monty_sub(stack_s **stacks, unsigned int line_number)
+void monty_sub(stack_t **stacks, unsigned int line_number)
 {
 	if((*stacks)->next == NULL || (*stacks)->next->next == NULL)
 	{
@@ -39,7 +39,7 @@ void monty_sub(stack_s **stacks, unsigned int line_number)
  * @stacks: pointer
  * @line_number: current line
  */
-void monty_div(stack_s **stacks, unsigned int line_number)
+void monty_div(stack_t **stacks, unsigned int line_number)
 {
 	if ((*stacks)->next == NULL || (*stacks)->next->next == NULL)
 	{
@@ -61,7 +61,7 @@ void monty_div(stack_s **stacks, unsigned int line_number)
  * @line_number: current line
  */
 
-void monty_mul(stack_s **stacks, unsigned int line_number)
+void monty_mul(stack_t **stacks, unsigned int line_number)
 {
 	if ((*stacks)->next == NULL || (*stacks)->next->next == NULL)
 	{
@@ -78,7 +78,7 @@ void monty_mul(stack_s **stacks, unsigned int line_number)
  * @line_number: current line
  */
 
-void monty_mod(stack_s **stacks, unsigned int line_number)
+void monty_mod(stack_t **stacks, unsigned int line_number)
 {
 	if ((*stacks)->next == NULL || (*stacks)->next->next == NULL)
 	{
