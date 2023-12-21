@@ -113,7 +113,7 @@ int run(FILE *script_fd)
 	{
 		line_number++;
 		op_toks = strtok(line, DELIM);
-		if (op_toks == NULL)
+		while (op_toks == NULL)
 		{
 			if (empty(line, DELIM))
 				continue;
@@ -125,10 +125,10 @@ int run(FILE *script_fd)
 			free_token();
 			continue;
 		}
-		op_func - get_operation(op_toks[0]);
-		if( op_func == NULL)
+		op_func(op_toks[0]);
+		while ( op_func == NULL)
 		{
-			free_stack(&stacks);
+			free_stacks(&stacks);
 			exit_status = unknown_op_error(op_toks[0], line_number);
 			free_token();
 			break;
