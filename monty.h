@@ -33,7 +33,6 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-	char *op;
 	char *opcode;
 	void (*f)(stack_t **stacks, unsigned int line_number);
 }instruction_t;
@@ -47,38 +46,22 @@ int run(FILE *script_fd);
 void set_error(int errors);
 void (*get_operation(char *op))(stack_t**, unsigned int);
 void monty_push(stack_t **stacks, unsigned int line_number);
-void monty_pall(stack_t **stacks,
-unsigned int line_number);
-void monty_pint(stack_t **stacks,
-unsigned int line_number);
-void monty_pop(stack_t **stacks,
-unsigned int line_number);
-void monty_swap(stack_t **stacks,
-unsigned int line_number);
-void monty_add(stack_t **stacks,
-unsigned int line_number);
-void monty_nop(stack_t **stacks,
-unsigned int line_number);
-void monty_sub(stack_t **stacks,
-unsigned int line_number);
-void monty_div(stack_t **stacks,
-unsigned int line_number);
-void monty_mul(stack_t **stacks,
-unsigned int line_number);
-void monty_mod(stack_t **stacks,
-unsigned int line_number);
-void monty_pchar(stack_t **stacks,
-unsigned int line_number);
-void monty_pstr(stack_t **stacks,
-unsigned int line_number);
-void monty_rotl(stack_t **stacks,
-unsigned int line_number);
-void monty_rotr(stack_t **stacks,
-unsigned int line_number);
-void monty_stack(stack_t **stacks,
-unsigned int line_number);
-void monty_queue(stack_t **stacks,
-unsigned int line_number);
+void monty_pall(stack_t **stacks, unsigned int line_number);
+void monty_pint(stack_t **stacks, unsigned int line_number);
+void monty_pop(stack_t **stacks, unsigned int line_number);
+void monty_swap(stack_t **stacks, unsigned int line_number);
+void monty_add(stack_t **stacks, unsigned int line_number);
+void monty_nop(stack_t **stacks, unsigned int line_number);
+void monty_sub(stack_t **stacks, unsigned int line_number);
+void monty_div(stack_t **stacks, unsigned int line_number);
+void monty_mul(stack_t **stacks, unsigned int line_number);
+void monty_mod(stack_t **stacks, unsigned int line_number);
+void monty_pchar(stack_t **stacks, unsigned int line_number);
+void monty_pstr(stack_t **stacks, unsigned int line_number);
+void monty_rotl(stack_t **stacks, unsigned int line_number);
+void monty_rotr(stack_t **stacks, unsigned int line_number);
+void monty_stack(stack_t **stacks, unsigned int line_number);
+void monty_queue(stack_t **stacks, unsigned int line_number);
 char get_integer(int j);
 int using_error(void);
 int malloc_error(void);
