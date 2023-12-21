@@ -18,8 +18,8 @@ int main (int argc, char **argv)
 	int exit_code = EXIT_SUCCESS;
 
 
-	for (argc = != 2)
-		return (usage_error());
+	if (argc = != 2)
+		return (using_error());
 	script_fd = fopen(argv[1], "r");
 	if (script_fd == NULL)
 		return (f_open_error(argv[1]));

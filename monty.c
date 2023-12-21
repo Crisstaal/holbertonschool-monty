@@ -14,7 +14,7 @@ int run(FILE *script_fd);
 void free_token(void)
 {
 	size_t b = 0;
-	if (opp_toks == NULL)
+	if (op_toks == NULL)
 		return;
 	for (b = 0; opp_toks[b]; b++)
 		free(opp_toks[b]);
