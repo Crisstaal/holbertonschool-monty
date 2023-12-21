@@ -6,6 +6,8 @@ int empty(char *line, char *delim);
 unsigned int array_length(void);
 void (*get_operation(char *op))(stack_t**, unsigned int);
 int run(FILE *script_fd);
+void unknown_op_error(char *op_toks, int line_number);
+void parse_stack_operation(char *op_toks);
 
 /**
  * free_token - frees the opp
@@ -129,7 +131,8 @@ int run(FILE *script_fd)
 			free_token();
 			continue;
 		}
-		void (*op_func)(stack_t**, unsigned int) = parse_stack_operaton(op_toks);
+		void (*op_func)(stack_t**, unsigned int);
+		op_func = parse_stack_operaton;
 
 		if ( op_func == NULL)
 		{
