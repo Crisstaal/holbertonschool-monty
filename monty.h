@@ -37,7 +37,7 @@ typedef struct instruction_s
 	void (*f)(stack_t **stacks, unsigned int line_number);
 }instruction_t;
 
-void run_monty();
+int run_monty(FILE *script_file);
 int arr_len(const int *arr);
 void free_stacks(stack_t **stacks);
 int init_stack(stack_t **stacks);

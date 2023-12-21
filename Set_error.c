@@ -15,7 +15,7 @@ void set_error(int errors)
 	size_t len_line = 0;
 	ssize_t read = getline(&line, &len_line, stdin);
 
-	len = arr_len();
+	len = arr_len(new_errors);
 	new_errors = malloc(sizeof(int) * (len + 2));
 
 	if (!new_errors)
@@ -46,5 +46,6 @@ void set_error(int errors)
 	new_errors[b++] = read;
 	new_errors[b] = 0;
 
+	free(new_erros);
 	free(line);
 }
