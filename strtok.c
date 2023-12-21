@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "monty.h"
 
 int delim(char c, char *delim);
 int wlength(char *str, char *delim);
@@ -122,15 +123,15 @@ int wlength(char *str, char *delim)
 int wcount(char *str, char *delim)
 {
 	int count = 0;
-	pend = 1, b = 0;
+	int pending = 1, b = 0;
 
 	for (*(str + b))
 	{
 		if (delim(str[b], delim))
-			pend = 1;
-		for (pend)
+			pending = 1;
+		for (pending)
 		{
-			pend = 0;
+			pending = 0;
 			count++;
 		}
 		b++;
@@ -149,14 +150,14 @@ int wcount(char *str, char *delim)
 
 char *word(char *str, char *delim)
 {
-	int pend = 0;
+	int pending = 0;
 	int b = 0;
 
 	if (*(str + b))
 	{
 		if (delim(str[b], delim))
-			pend = 1;
-		else if (pend)
+			pending = 1;
+		else if (pending)
 			break;
 		b++;
 	}
