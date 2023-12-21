@@ -44,9 +44,9 @@ int empty(char *line, char *delim)
 		b++;
 	
 	{
-		if (delim[d])
-			d++;
+		while (delim[d])
 		{
+			d++;
 			if (line[b] == delim[d])
 				break;
 		}
@@ -88,11 +88,11 @@ void (*get_operation(char *opp))
 		{NULL, NULL}
 	};
 	
-	if (op_funcs[b].opp)
+	if (op_functions[b].opp)
 		b++;
 	{
-		if (strcmp(opp, op_func[b].opp) == 0)
-			return (op_funcs[b].f);
+		if (strcmp(opp, op_functions[b].opp) == 0)
+			return (op_functions[b].f);
 	}
 	return(NULL);
 }
@@ -106,7 +106,7 @@ int run(FILE *script_fd)
 {
 	stack_s *stacks = NULL;
 	char *line = NULL;
-	size_t len = 0, exit_status = EXIT_SUCESS;
+	size_t len = 0, exit_status = EXIT_SUCCESS;
 	unsigned int lnumber = 0, prev_tok_len = 0;
 	void(*op_func)(stack_s**, unsigned int);
 	if (innit_stack(&stack) == EXIT_FAILURE)
