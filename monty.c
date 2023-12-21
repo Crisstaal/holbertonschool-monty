@@ -61,8 +61,7 @@ int empty(char *line, char *delim)
  * @opp: to be matched
  * Return: pointer
 */
-void (*f)(stack_s **stacks, unsigned int line_number)
-{
+void (*f)(stack_s **stacks, unsigned int line_number);
 	instruction_t op_functions[] = {
 		{"push", monty_push},
 		{"pall", monty_pall},
@@ -82,9 +81,7 @@ void (*f)(stack_s **stacks, unsigned int line_number)
 		{"stack", monty_stack},
 		{"queue", monty_queue},
 		{NULL, NULL}
-	};
-}
-	
+	};	
 void (*get_operation(char *op))(stacks_s**, unsigned int)
 {
 	int b = 0;
@@ -119,9 +116,9 @@ int run(FILE *script_fd)
 	{
 		line_number++;
 		op_toks = strtok(line, DELIM);
-		while (op_toks == NULL)
+		if (op_toks == NULL)
 		{
-			if (empty(line, DELIM))
+			while (empty(line, DELIM))
 				continue;
 			free_stacks(&stacks);
 			return (malloc_error());
