@@ -46,6 +46,5 @@ void set_error(int errors)
 	new_errors[b++] = read;
 	new_errors[b] = 0;
 
-	free(new_erros);
 	free(line);
 }
