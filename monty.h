@@ -43,7 +43,7 @@ int check(stack_t *stacks);
 void free_token(void);
 unsigned int array_length(void);
 int run(FILE *script_fd);
-void set_error(int *errors);
+void set_error(int errors);
 void parse_stack_operation(stack_t **stack, unsigned int line_number);
 void (*get_operation(char *op))(stack_t**, unsigned int);
 void monty_push(stack_t **stacks, unsigned int line_number);
