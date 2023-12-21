@@ -82,7 +82,7 @@ void (*f)(stack_s **stacks, unsigned int line_number);
 		{"queue", monty_queue},
 		{NULL, NULL}
 	};	
-void (*get_operation(char *op))(stacks_s**, unsigned int)
+void (*get_operation(char *op))(stacks_t**, unsigned int)
 {
 	int b = 0;
 

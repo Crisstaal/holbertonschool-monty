@@ -46,6 +46,7 @@ void free_token(void);
 unsigned int array_length(void);
 int run(FILE *script_fd);
 void set_error(int errors);
+void (*get_operation(char *op))(stack_t**, unsigned int);
 void monty_push(stack_s **stacks, unsigned int line_number);
 void monty_pall(stack_s **stacks,
 unsigned int line_number);
