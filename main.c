@@ -18,7 +18,7 @@ int usage_error(void)
 	return EXIT_FAILURE;
 }
 
-int f_open_error(const char *filename)
+int f_open_error(char *filename)
 {
 	perror(filename);
 	return EXIT_FAILURE;
