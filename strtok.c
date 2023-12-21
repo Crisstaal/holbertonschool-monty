@@ -92,18 +92,17 @@ int delim (char c, char *delim)
 int wlength(char *str, char *delim)
 {
 	int len = 0;
-	pend = 1, b = 0;
+	int pend = 1, b = 0;
 
 	while (*(str + b))
 	{
-		for (delim(str[b], delim))
+		if (delim(str[b])
 			pend = 1;
 		if (pend)
-		{
 			len++;
-		}
-		for (len > 0 && delim(str[b], delim))
+		for (len > 0 && delim(str[b])
 			break;
+			}
 		b++;
 	}
 	return(len);
