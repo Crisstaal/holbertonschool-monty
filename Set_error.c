@@ -6,7 +6,7 @@
  * @errors: integer
  */
 
-void set_error(int errors)
+void set_error(int *errors)
 {
 	int len = 0;
 	int b;
