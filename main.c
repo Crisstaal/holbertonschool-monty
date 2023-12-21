@@ -12,6 +12,17 @@ int run_monty(FILE *script_file);
  * @argv: arguments
  * Return: EXIT_SUCCESS on success
  */
+int usage_error(void)
+{
+	fprintf(stderr, "Usage: %s <script_file>\n", op_toks[0]);
+	return EXIT_FAILURE;
+}
+
+int f_open_error(const char *filename)
+{
+	perror(filename);
+	return EXIT_FAILURE;
+}
 
 int main (int argc, char **argv)
 {
@@ -21,6 +32,7 @@ int main (int argc, char **argv)
 
 	if (argc != 2)
 		return (usage_error());
+
 	script_fd = fopen(argv[1], "r");
 	if (script_fd == NULL)
 		return (f_open_error(argv[1]));
