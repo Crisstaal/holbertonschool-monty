@@ -6,7 +6,8 @@ int empty(char *line, char *delim);
 unsigned int array_length(void);
 void (*get_operation(char *op))(stack_t**, unsigned int);
 int run(FILE *script_fd);
-unknown_op_error(op_toks, line_number);
+int unknown_op_error(op_toks, line_number);
+void (*op_func)(char *);
 void parse_stack_operation(stack_t **stack, unsigned int line_number);
 
 /**
