@@ -39,10 +39,10 @@ typedef struct instruction_s
 
 void free_stacks(stack_t **stacks);
 int init_stack(stack_t **stacks);
-int check(stack_t *stacks);
+int check_mode(stack_t *stacks);
 void free_token(void);
-unsigned int array_length(void);
-int run(FILE *script_fd);
+unsigned int token_arr_len(void);
+int run_monty(FILE *script_fd);
 void set_error(int errors);
 void parse_stack_operation(stack_t **stack, unsigned int line_number);
 void (*get_operation(char *op))(stack_t**, unsigned int);
