@@ -4,7 +4,7 @@
 void free_token(void);
 int empty(char *line, char *delim);
 unsigned int array_length(void);
-void (*get_operation(char *op))(stack_s**, unsigned int);
+void (*get_operation(char *op))(stack_t**, unsigned int);
 int run(FILE *script_fd);
 
 /**
@@ -61,7 +61,7 @@ int empty(char *line, char *delim)
  * @opp: to be matched
  * Return: pointer
 */
-void (*f)(stack_s **stacks, unsigned int line_number);
+void (*f)(stack_t **stacks, unsigned int line_number);
 	instruction_t op_functions[] = {
 		{"push", monty_push},
 		{"pall", monty_pall},
@@ -105,11 +105,11 @@ void (*get_operation(char *op))(stacks_t**, unsigned int)
 
 int run(FILE *script_fd)
 {
-	stack_s *stacks = NULL;
+	stack_t *stacks = NULL;
 	char *line = NULL;
 	size_t len = 0, exit_status = EXIT_SUCCESS;
 	unsigned int line_number = 0, prev_tok_len = 0;
-	void(*op_func)(stack_s**, unsigned int);
+	void(*op_func)(stack_t**, unsigned int);
 	if (init_stack(&stacks) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	if (getline(&line, &len, script_fd) != -1)
