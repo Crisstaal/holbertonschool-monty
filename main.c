@@ -1,4 +1,3 @@
-#include "monty.h"
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -12,18 +11,6 @@ int run_monty(FILE *script_file);
  * @argv: arguments
  * Return: EXIT_SUCCESS on success
  */
-int usage_error(void)
-{
-	fprintf(stderr, "Usage: %s <script_file>\n", op_toks[0]);
-	return EXIT_FAILURE;
-}
-
-int f_open_error(char *filename)
-{
-	perror(filename);
-	return EXIT_FAILURE;
-}
-
 int main (int argc, char **argv)
 {
 	FILE *script_fd = NULL;
