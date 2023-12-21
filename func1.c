@@ -11,7 +11,7 @@ void monty_push(stack_t **stacks, unsigned int line_number)
 	stack_t *tmp = NULL;
 	stack_t *new;
 	int b = 0;
-	int malloc_err = malloc_error;
+	int malloc_err = malloc_error();
 
 	if (new == NULL)
 	{
