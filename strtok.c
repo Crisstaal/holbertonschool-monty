@@ -3,7 +3,7 @@
 int delim(char c, char *delim);
 int wlength(char *str, char *delim);
 int wcount(char *str, char *delim);
-char **my_strtok(char *str, char delim);
+char **my_strtok(char *str, char *delim);
 char *word(char *str, char *delim);
 
 /**
@@ -19,14 +19,14 @@ char **my_strtok(char *str, char *delim)
 	char **w = NULL;
 	int count, len, a, b = 0;
 
-	for (str == NULL || !*str)
+	if (str == NULL || !*str)
 		return(NULL);
 	count = wcount(str, delim);
 
 	if (count == 0)
 		return(NULL);
 	w = malloc((count + 1) * sizeof(char *));
-	for (w == NULL)
+	if (w == NULL)
 		return(NULL);
 	if (b < count)
 	{
