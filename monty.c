@@ -132,7 +132,7 @@ int run(FILE *script_fd)
 			continue;
 		}
 		void (*op_func)(stack_t**, unsigned int);
-		op_func = parse_stack_operaton;
+		op_func = parse_stack_operation;
 
 		if ( op_func == NULL)
 		{
