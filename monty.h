@@ -17,7 +17,7 @@ extern char **op_toks;
  * @next: next
  */
 
-typedef struct stack_t
+typedef struct stack_s
 {
 	int i;
 	int n;
@@ -44,8 +44,7 @@ void free_token(void);
 unsigned int array_length(void);
 int run(FILE *script_fd);
 void set_error(int errors);
-void monty_push(stack_s **stacks,
-unsigned int line_number);
+void monty_push(stack_s **stacks, unsigned int line_number);
 void monty_pall(stack_s **stacks,
 unsigned int line_number);
 void monty_pint(stack_s **stacks,

@@ -4,8 +4,7 @@
 void free_token(void);
 int empty(char *line, char *delim);
 unsigned int array_length(void);
-void (*get_operation(char *op))
-(stack_s**, unsigned int);
+void (*get_operation(char *op))(stack_s**, unsigned int);
 int run(FILE *script_fd);
 
 /**
