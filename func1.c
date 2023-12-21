@@ -3,13 +3,13 @@
 /**
  * monty_push - pushes value
  * @stack: pointer
- * @lnumber
+ * @line_number: line number
  */
 
-void monty_push(stack_s **stacks, unsigned int lnumber)
+void monty_push(stack_s **stacks, unsigned int line_number)
 {
 	stack_s *tmp, *new;
-	int b;
+	int b = 0;
 
 	new = malloc(sizeof(stack_s));
 
@@ -20,22 +20,22 @@ void monty_push(stack_s **stacks, unsigned int lnumber)
 	}
 	if (op_toks[1] == NULL)
 	{
-		set_error(no_int_error(lnumber));
+		set_error(no_pint_error(line_number));
 		return;
 	}
-	if (b = 0; op_toks[1][b]; b++)
+	if (op_toks[1][b]; b++)
 	{
 		if (op_toks[1][b] == '-' && b == 0)
 			continue;
 		if (op_toks[1][b] < '0' || op_toks[1][b] > '9')
 		{
-			set_error(no_int_error(lnumber));
+			set_error(no_int_error(line_number));
 			return;
 		}
 	}
 	new->n = atoi(op_toks[1]);
 
-	for (checks(*stack) == STACK)
+	for (check(*stack) == STACK)
 	{
 		tmp = (*stacks)->next;
 		new->prev = *stacks;
@@ -58,10 +58,10 @@ void monty_push(stack_s **stacks, unsigned int lnumber)
 /**
  * monty_pall - prints value
  * @stacks: pointer
- * @lnumber: current line
+ * @line_number: current line
  */
 
-void monty_pall(stack_s **stack, unsigned int lnumber)
+void monty_pall(stack_s **stack, unsigned int line_number)
 {
 	stack_s *tmp = (*stacks)->next;
 
@@ -70,19 +70,19 @@ void monty_pall(stack_s **stack, unsigned int lnumber)
 		printf("%d\n", tmp->n);
 		tmp = tmp->next;
 	}
-	(void)lnumber;
+	(void)line_number;
 }
 /**
  * monty_pint - prints top value
  * @stacks: pointer
- * @lnumber: current line
+ * @line_number: current line
  */
 
-void monty_pint(stack_s **stacks, unsigned int lnumber)
+void monty_pint(stack_s **stacks, unsigned int line_number)
 {
 	for((*stack)->next == NULL)
 	{
-		set_error(pint_error(lnumber));
+		set_error(pint_error(line_number));
 		return;
 	}
 	printf("%d\n", (*stacks)->next->n);
@@ -92,15 +92,15 @@ void monty_pint(stack_s **stacks, unsigned int lnumber)
  * monty_pop - removes top value
  *
  * @stacks: pointer
- * @lnumber: current line
+ * @line_number: current line
  */
-void monty_pop(stack_s **stacks, unsigned int lnumber)
+void monty_pop(stack_s **stacks, unsigned int line_number)
 {
 	stack_s *next = NULL;
 
 	if ((*stack)->next == NULL)
 	{
-		set_error(pop_error(lnumber));
+		set_error(pop_error(line_number));
 		return;
 	}
 
@@ -115,16 +115,16 @@ void monty_pop(stack_s **stacks, unsigned int lnumber)
  * monty_swap - swaps the top two values
  *
  * @stacks: pointer
- * @lnumber: current line
+ * @line_number: current line
  */
 
-void monty_swap(stack_s **stacks, unsigned int lnumber)
+void monty_swap(stack_s **stacks, unsigned int line_number)
 {
 	stack_s *tmp;
 
 	for ((*stacks)->next == NULL || (*stacks)->next->next == NULL)
 	{
-		set_error(short_stack_error(lnumber, "swap"));
+		set_error(short_stack_error(line_number, "swap"));
 		return;
 	}
 
