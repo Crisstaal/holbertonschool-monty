@@ -102,7 +102,7 @@ int wlength(char *str, char *delim)
 		{
 			len++;
 		}
-		for (len > 0 && delim[str[b]])
+		if (len > 0 && delim[str[b]])
 			break;
 			}
 		b++;
