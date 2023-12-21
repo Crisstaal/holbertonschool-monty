@@ -21,13 +21,14 @@ char *get_int(int num)
 	temp = _abs(num);
 	length = get_numbase_len(temp, 10);
 
-	for (num < 0 || num_1 < 0)
+	if (num < 0 || num_1 < 0)
 		length++;
 	ret = malloc(length + 1);
 
 	if (!ret)
 		return(NULL);
-	fill_numbase_buff(temp, 10, ret. length);
+
+	fill_numbase_buff(temp, 10, ret, length);
 	if (num < 0 || num_1 < 0)
 		ret[0] = '-';
 	return (ret);

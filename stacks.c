@@ -28,7 +28,7 @@ void free_stacks(stack_t **stacks)
  * Return: if error EXIT_FAILURE
  */
 
-int stacks(stacks_t **stacks)
+int stacks(stack_t **stacks)
 {
 	stacks_t *s;
 	s = malloc(sizeof(stacks_t));
