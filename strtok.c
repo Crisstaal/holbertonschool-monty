@@ -158,7 +158,9 @@ char *word(char *str, char *delim)
 		if (delim[(int)str[b]])
 			pending = 1;
 		else if (pending)
+		{
 			break;
+		}
 		b++;
 	}
 	return (str + b);
