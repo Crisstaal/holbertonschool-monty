@@ -61,7 +61,9 @@ int empty(char *line, char *delim)
  * @opp: to be matched
  * Return: pointer
 */
-instruction_t op_functions[] = {
+void (*f)(stack_s **stacks, unsigned int line_number)
+{
+	instruction_t op_functions[] = {
 		{"push", monty_push},
 		{"pall", monty_pall},
 		{"pint", monty_pint},
