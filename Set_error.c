@@ -12,7 +12,6 @@ void set_error(int errors)
 	int exit_code = 0;
 	int *new_errors = NULL;
 	char *line = NULL;
-	size_t len = 0;
 	size_t read = getline(&line, &len, stdin);
 
 	len = array_length();
@@ -34,8 +33,9 @@ void set_error(int errors)
 		new_errors[b] = errors;
 	}
 	
-	
-	if (read == -1)
+	size_t len = 0;
+
+	if (read == (ssize_t) -1)
 	{
 		free(new_errors);
 		free(line);
@@ -46,7 +46,7 @@ void set_error(int errors)
 	new_errors[b++] = read;
 	new_errors[b] = 0;
 
-	free(errors);
+	free(new_errors);
 	free(line);
 	errors = new_errors;
 }
