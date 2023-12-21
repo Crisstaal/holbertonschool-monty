@@ -108,7 +108,7 @@ void monty_pop(stack_s **stacks, unsigned int line_number)
 	}
 
 	next = (*stacks)->next->next;
-	free(*stacks)->next;
+	free(*stacks);
 	if (next)
 		next->prev = *stacks;
 	(*stacks)->next = next;
@@ -127,7 +127,7 @@ void monty_swap(stack_s **stacks, unsigned int line_number)
 
 	if ((*stacks)->next == NULL || (*stacks)->next->next == NULL)
 	{
-		set_error(short_stack_error(line_number, "swap"));
+		set_error(short_error(line_number, "swap"));
 		return;
 	}
 
@@ -137,7 +137,7 @@ void monty_swap(stack_s **stacks, unsigned int line_number)
 	if (tmp->next)
 	{
 		tmp->next->prev = (*stacks)->next;
-	tmp->next = (*stacl)->next;
+	tmp->next = (*stacks)->next;
 	tmp->prev = *stacks;
 	(*stacks)->next = tmp;
 	}
