@@ -12,7 +12,7 @@ int checks_stacks(stack_t *stacks);
 
 void free_stacks(stack_t **stacks)
 {
-	stacks_t *tmp = *stacks;
+	stack_t *tmp = *stacks;
 	if (*stacks)
 	{
 		tmp = (*stacks)->next;

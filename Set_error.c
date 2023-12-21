@@ -32,7 +32,7 @@ void set_error(int *errors)
 		new_errors[b] = errors[b];
 	}
 	
-	exit_code = get_line(errors);
+	exit_code = getline(errors);
 	if (!exit_code)
 	{
 		free(new_errors);
