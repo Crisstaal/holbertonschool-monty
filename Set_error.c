@@ -9,14 +9,14 @@
 void set_error(int errors)
 {
 	int len = 0;
-	b = 0;
+	int b = 0;
 	char *exit = NULL;
 	char *new = NULL;
 
-	len = array_len();
+	len = array_length();
 	new = malloc(sizeof(char *) * (len + 2));
 
-	for (!error)
+	if (!errors)
 	{
 		malloc_error();
 		return;
