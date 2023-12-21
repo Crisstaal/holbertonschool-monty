@@ -45,7 +45,7 @@ unsigned int array_length(void);
 int run(FILE *script_fd);
 void set_error(int errors);
 void (*op_func)(char *);
-void parse_stack_operation(char *);
+void parse_stack_operation(stack_t **stack, unsigned int line_number);
 void (*get_operation(char *op))(stack_t**, unsigned int);
 void monty_push(stack_t **stacks, unsigned int line_number);
 void monty_pall(stack_t **stacks, unsigned int line_number);
@@ -68,8 +68,7 @@ char get_integer(int j);
 int using_error(void);
 int malloc_error(void);
 int f_open_error(char *filename);
-int unknown_opp(char *opcode,
-unsigned int line_number);
+int unknown_op(char *opcode, unsigned int line_number);
 int no_error(unsigned int line_number);
 int pop_error(unsigned int line_number);
 int pint_error(unsigned int line_number);
