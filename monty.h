@@ -71,7 +71,7 @@ int unknown_op(char *opcode, unsigned int line_number);
 int no_error(unsigned int line_number);
 int pop_error(unsigned int line_number);
 int pint_error(unsigned int line_number);
-int short_error(unsigned int line_number, char *opp);
+int short_stack_error(unsigned int line_number, char *op);
 int div_error(unsigned int line_number);
 int pchar_error(unsigned int line_number, char *m);
 
