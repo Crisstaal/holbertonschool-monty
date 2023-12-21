@@ -19,7 +19,7 @@ int main (int argc, char **argv)
 
 
 	if (argc != 2)
-		return (using_error());
+		return (usage_error());
 	script_fd = fopen(argv[1], "r");
 	if (script_fd == NULL)
 		return (f_open_error(argv[1]));

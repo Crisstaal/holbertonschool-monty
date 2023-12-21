@@ -64,7 +64,7 @@ void monty_rotr(stack_t **stacks, unsigned int line_number);
 void monty_stack(stack_t **stacks, unsigned int line_number);
 void monty_queue(stack_t **stacks, unsigned int line_number);
 char get_integer(int j);
-int using_error(void);
+int usage_error(void);
 int malloc_error(void);
 int f_open_error(char *filename);
 int unknown_op(char *opcode, unsigned int line_number);
