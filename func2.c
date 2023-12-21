@@ -10,7 +10,7 @@ void monty_add(stack_t **stacks, unsigned int line_number)
 {
 	if ((*stacks)->next == NULL || (*stacks)->next->next == NULL)
 	{
-		set_error(short_error(line_number, "add"));
+		set_error(short_stack_error(line_number, "add"));
 		return;
 	}
 	(*stacks)->next->next->n += (*stacks)->next->n;
@@ -28,7 +28,7 @@ void monty_sub(stack_t **stacks, unsigned int line_number)
 {
 	if((*stacks)->next == NULL || (*stacks)->next->next == NULL)
 	{
-		set_error(short_error(line_number, "sub"));
+		set_error(short_stack_error(line_number, "sub"));
 		return;
 	}
 	(*stacks)->next->next->n -= (*stacks)->next->n;
@@ -43,7 +43,7 @@ void monty_div(stack_t **stacks, unsigned int line_number)
 {
 	if ((*stacks)->next == NULL || (*stacks)->next->next == NULL)
 	{
-		set_error(short_error(line_number, "div"));
+		set_error(short_stack_error(line_number, "div"));
 		return;
 	}
 	if ((*stacks)->next->n == 0)
@@ -65,7 +65,7 @@ void monty_mul(stack_t **stacks, unsigned int line_number)
 {
 	if ((*stacks)->next == NULL || (*stacks)->next->next == NULL)
 	{
-		set_error(short_error(line_number, "mul"));
+		set_error(short_stack_error(line_number, "mul"));
 		return;
 	}
 	(*stacks)->next->next->n += (*stacks)->next->n;
@@ -82,7 +82,7 @@ void monty_mod(stack_t **stacks, unsigned int line_number)
 {
 	if ((*stacks)->next == NULL || (*stacks)->next->next == NULL)
 	{
-		set_error(short_error(line_number, "mod"));
+		set_error(short_stack_error(line_number, "mod"));
 		return;
 	}
 	if ((*stacks)->next->n == 0)

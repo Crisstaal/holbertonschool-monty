@@ -130,7 +130,7 @@ void monty_swap(stack_t **stacks, unsigned int line_number)
 
 	if ((*stacks)->next == NULL || (*stacks)->next->next == NULL)
 	{
-		set_error(short_error(line_number, "swap"));
+		set_error(short_stack_error(line_number, "swap"));
 		return;
 	}
 
