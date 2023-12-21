@@ -6,13 +6,13 @@
  * @line_number: line number
  */
 
-void monty_push(stack_s **stacks, unsigned int line_number)
+void monty_push(stack_t **stacks, unsigned int line_number)
 {
-	stack_s *tmp = NULL;
-	stack_s *new;
+	stack_t *tmp = NULL;
+	stack_t *new;
 	int b = 0;
 
-	new = malloc(sizeof(stack_s));
+	new = malloc(sizeof(stack_t));
 
 	if (new == NULL)
 	{
@@ -65,9 +65,9 @@ void monty_push(stack_s **stacks, unsigned int line_number)
  * @line_number: current line
  */
 
-void monty_pall(stack_s **stacks, unsigned int line_number)
+void monty_pall(stack_t **stacks, unsigned int line_number)
 {
-	stack_s *tmp = (*stacks)->next;
+	stack_t *tmp = (*stacks)->next;
 
 	while (tmp)
 	{
@@ -82,7 +82,7 @@ void monty_pall(stack_s **stacks, unsigned int line_number)
  * @line_number: current line
  */
 
-void monty_pint(stack_s **stacks, unsigned int line_number)
+void monty_pint(stack_t **stacks, unsigned int line_number)
 {
 	if ((*stacks)->next == NULL)
 	{
@@ -98,9 +98,9 @@ void monty_pint(stack_s **stacks, unsigned int line_number)
  * @stacks: pointer
  * @line_number: current line
  */
-void monty_pop(stack_s **stacks, unsigned int line_number)
+void monty_pop(stack_t **stacks, unsigned int line_number)
 {
-	stack_s *next = NULL;
+	stack_t *next = NULL;
 
 	if ((*stacks)->next == NULL)
 	{
@@ -122,9 +122,9 @@ void monty_pop(stack_s **stacks, unsigned int line_number)
  * @line_number: current line
  */
 
-void monty_swap(stack_s **stacks, unsigned int line_number)
+void monty_swap(stack_t **stacks, unsigned int line_number)
 {
-	stack_s *tmp;
+	stack_t *tmp;
 
 	if ((*stacks)->next == NULL || (*stacks)->next->next == NULL)
 	{
