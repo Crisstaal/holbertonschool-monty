@@ -34,7 +34,7 @@ char **my_strtok(char *str, char *delim)
 	if (b < count)
 	{
 		len = wlength(str, delim);
-		if (delim[*str])
+		if (delim[(int)*str])
 		{
 			str = word(str, delim);
 		}
@@ -99,11 +99,11 @@ int wlength(char *str, char *delim)
 
 	while (*(str + b))
 	{
-		if (delim[str[b]])
+		if (delim[(int)str[b]])
 		{
 			len++;
 		}
-		if (len > 0 && delim[str[b]])
+		if (len > 0 && delim[(int)str[b]])
 			break;
 			}
 		b++;
@@ -125,7 +125,7 @@ int wcount(char *str, char *delim)
 	int count = 0;
 	int pending = 1, b = 0;
 
-	for (*(str + b))
+	for (b = 0; *(str + b); b++)
 	{
 		if (delim(str[b], delim))
 			pending = 1;
