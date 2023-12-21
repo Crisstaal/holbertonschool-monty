@@ -82,7 +82,7 @@ void (*f)(stack_t **stacks, unsigned int line_number);
 		{"queue", monty_queue},
 		{NULL, NULL}
 	};	
-void (*get_operation(char *op))(stacks_t**, unsigned int)
+void (*get_operation(char *op))(stack_t**, unsigned int)
 {
 	int b = 0;
 
@@ -109,35 +109,39 @@ int run(FILE *script_fd)
 	char *line = NULL;
 	size_t len = 0, exit_status = EXIT_SUCCESS;
 	unsigned int line_number = 0, prev_tok_len = 0;
-	void(*op_func)(stack_t**, unsigned int);
+
 	if (init_stack(&stacks) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	if (getline(&line, &len, script_fd) != -1)
+	while (getline(&line, &len, script_fd) != -1)
 	{
 		line_number++;
-		op_toks = strtok(line, DELIM);
+		char *op_toks = strtok(line, DELIM);
 		if (op_toks == NULL)
 		{
 			while (empty(line, DELIM))
-				continue;
+			{
 			free_stacks(&stacks);
 			return (malloc_error());
+			}
 		}
 		if (op_toks[0][0] == '#')
 		{
 			free_token();
 			continue;
 		}
-		op_func(op_toks[0]);
+		void (*op_func)(stack_t**, unsigned int);
+		op_func(op_toks, line_number);
+
 		while ( op_func == NULL)
 		{
 			free_stacks(&stacks);
-			exit_status = unknown_op_error(op_toks[0], line_number);
+			exit_status = unknown_op_error(op_toks, line_number);
 			free_token();
 			break;
 		}
 		prev_tok_len = array_length();
 		op_func(&stack, line_number);
+
 		while (array_length() != prev_tok_len)
 		{
 			if (op_toks && op_toks[prev_tok_len])
@@ -150,6 +154,7 @@ int run(FILE *script_fd)
 		free_token();
 	}
 	free_stack(&stacks);
+
 	if (line && *line == 0)
 	{
 		free(line);
