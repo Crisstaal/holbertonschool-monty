@@ -8,7 +8,8 @@
 
 void monty_push(stack_s **stacks, unsigned int line_number)
 {
-	stack_s *tmp, *new;
+	stack_s *tmp = NULL;
+	stack_s *new;
 	int b = 0;
 
 	new = malloc(sizeof(stack_s));

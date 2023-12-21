@@ -17,13 +17,15 @@ extern char **op_toks;
  * @next: next
  */
 
-typedef struct stack_s
+typedef struct stack_t
 {
 	int i;
 	int n;
 	struct stack_t *prev;
 	struct stack_t *next;
 } stack_s;
+
+typedef struct stack_t stack_s;
 
 /**
  * struct instruction_s - function
