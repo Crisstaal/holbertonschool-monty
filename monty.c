@@ -62,8 +62,6 @@ int empty(char *line, char *delim)
  * @opp: to be matched
  * Return: pointer
  */
-void (*get_operation(char *op))
-(stack_s**, unsigned int)
 {
 	int b = 0;
 
