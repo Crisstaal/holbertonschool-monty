@@ -9,9 +9,9 @@
 void set_error(int errors)
 {
 	int b;
-	int exit_code = 0;
 	int *new_errors = NULL;
 	char *line = NULL;
+	size_t len = 0;
 	size_t read = getline(&line, &len, stdin);
 
 	len = array_length();
@@ -33,7 +33,6 @@ void set_error(int errors)
 		new_errors[b] = errors;
 	}
 	
-	size_t len = 0;
 
 	if (read == (ssize_t) -1)
 	{
