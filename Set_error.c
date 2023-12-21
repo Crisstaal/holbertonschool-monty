@@ -15,7 +15,7 @@ void set_error(int errors)
 	size_t len_line = 0;
 	ssize_t read = getline(&line, &len_line, stdin);
 
-	len = array_length();
+	len = token_arr_len();
 	new_errors = malloc(sizeof(int) * (len + 2));
 
 	if (!new_errors)
