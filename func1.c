@@ -16,12 +16,12 @@ void monty_push(stack_t **stacks, unsigned int line_number)
 
 	if (new == NULL)
 	{
-		set_error(malloc_error());
+		set_error(&malloc_error());
 		return;
 	}
 	if (op_toks[1] == NULL)
 	{
-		set_error(pint_error(line_number));
+		set_error(&pint_error(line_number));
 		return;
 	}
 	if (op_toks[1][b])
