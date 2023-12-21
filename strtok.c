@@ -3,7 +3,7 @@
 int delim(char c, char *delim);
 int wlength(char *str, char *delim);
 int wcount(char *str, char *delim);
-char **strtok(char *str, char delim);
+char **my_strtok(char *str, char delim);
 char *word(char *str, char *delim);
 
 /**
@@ -14,7 +14,7 @@ char *word(char *str, char *delim);
  * Return: array of pointers
  */
 
-char **strtok(char *str, char *delim)
+char **my_strtok(char *str, char *delim)
 {
 	char **w = NULL;
 	int count, len, a, b = 0;
