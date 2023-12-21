@@ -6,8 +6,8 @@ int empty(char *line, char *delim);
 unsigned int array_length(void);
 void (*get_operation(char *op))(stack_t**, unsigned int);
 int run(FILE *script_fd);
-int unknown_op_error(op_toks, line_number);
-void (*op_func)(char *);
+int unknown_op_error(char *op_toks, unsigned int line_number);
+void (*op_func)(stack_t**, unsigned int);
 void parse_stack_operation(stack_t **stack, unsigned int line_number);
 
 /**
@@ -112,6 +112,7 @@ int run(FILE *script_fd)
 	char *line = NULL;
 	size_t len = 0, exit_status = EXIT_SUCCESS;
 	unsigned int line_number = 0, prev_tok_len = 0;
+	char *endptr;
 
 	if (init_stack(&stacks) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
@@ -142,7 +143,7 @@ int run(FILE *script_fd)
 			break;
 		}
 		prev_tok_len = array_length();
-		op_func(&stacks, line_number);
+		op_func(stacks, line_number);
 
 		while (array_length() != prev_tok_len)
 		{
