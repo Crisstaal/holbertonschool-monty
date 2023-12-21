@@ -34,8 +34,7 @@ typedef struct instruction_s
 {
 	char *op;
 	char *opcode;
-	void (*f)(stack_s **stack,
-			unsigned int line_number);
+	void (*f)(stack_s **stacks, unsigned int line_number);
 }instruction_t;
 
 void free_stacks(stack_s **stacks);
