@@ -112,9 +112,6 @@ int run(FILE *script_fd)
 	char *line = NULL;
 	size_t len = 0, exit_status = EXIT_SUCCESS;
 	unsigned int line_number = 0, prev_tok_len = 0;
-	char *endptr;
-
-	stack_t *stacks = NULL;
 
 	if (init_stack(&stacks) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
@@ -153,6 +150,7 @@ int run(FILE *script_fd)
 			if (op_toks && op_toks[prev_tok_len])
 			{
 				exit_status = atoi(op_toks + prev_tok_len);
+			}
 			else
 				exit_status = EXIT_FAILURE;
 			free_token();
@@ -160,7 +158,7 @@ int run(FILE *script_fd)
 		}
 		free_token();
 	}
-	free_stack(&stacks);
+	free_stacks(&stacks);
 
 	if (line && *line == 0)
 	{

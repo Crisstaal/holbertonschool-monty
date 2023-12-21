@@ -27,7 +27,7 @@ void set_error(int errors)
 		malloc_error();
 		return;
 	}
-	for (b < len; b++)
+	if (b < len; b++)
 	{
 		new[b] = errors[b];
 	}
