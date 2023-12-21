@@ -83,7 +83,7 @@ void monty_pall(stack_s **stacks, unsigned int line_number)
 
 void monty_pint(stack_s **stacks, unsigned int line_number)
 {
-	for((*stack)->next == NULL)
+	for((*stacks)->next == NULL)
 	{
 		set_error(pint_error(line_number));
 		return;
@@ -101,7 +101,7 @@ void monty_pop(stack_s **stacks, unsigned int line_number)
 {
 	stack_s *next = NULL;
 
-	if ((*stack)->next == NULL)
+	if ((*stacks)->next == NULL)
 	{
 		set_error(pop_error(line_number));
 		return;
@@ -109,7 +109,7 @@ void monty_pop(stack_s **stacks, unsigned int line_number)
 
 	next = (*stack)->next->next;
 	free(*stack)->next;
-	for (next)
+	if (next)
 		next->prev = *stack;
 	(*stack)->next = next;
 }
