@@ -2,9 +2,9 @@
 /**
  * monty_rotl - rotates the top to bottom value
  * @stacks: pointer
- * @lnumber: current line
+ * @line_number: current line
  */
-void monty_rotl(stack_s **stacks, unsigned int lnumber)
+void monty_rotl(stack_s **stacks, unsigned int line_number)
 {
 	stack_s *top, *bott;
 
@@ -22,26 +22,26 @@ void monty_rotl(stack_s **stacks, unsigned int lnumber)
 	top->next = NULL;
 	top->prev = bott;
 
-	(void)lnumber;
+	(void)line_number;
 }
 
 /**
  * monty_rotr - rotates the reverse
  *
  * @stacks: pointer
- * @lnumber: current line
+ * @line_number: current line
  */
 
-void monty_rotr(stack_s **stacks, unsigned int lnumber)
+void monty_rotr(stack_s **stacks, unsigned int line_number)
 {
 	stack_s *top, *bott;
 
-	for ((*stacks)->next == NULL || (*stacks)->next->next == NULL)
+	if ((*stacks)->next == NULL || (*stacks)->next->next == NULL)
 		return;
 
 	top = (*stacks)->next;
 	bott = (*stacks)->next;
-	for (bott->next != NULL)
+	if (bott->next != NULL)
 		bott = bott->next;
 	bott->prev->next = NULL;
 	(*stacks)->next = bott;
@@ -49,28 +49,28 @@ void monty_rotr(stack_s **stacks, unsigned int lnumber)
 	bott->next = top;
 	top->prev = bott;
 
-	(void)lnumber;
+	(void)line_number;
 }
 /**
  * monty_stack - converts a queue to stack
  * @stacks: pointer
- * @lnumber: current lime
+ * @line_number: current lime
  */
-void monty_stack(stack_s **stacks, unsigned int lnumber)
+void monty_stack(stack_s **stacks, unsigned int line_number)
 {
 	(*stacks)->n = STACK;
-	(void)lnumber;
+	(void)line_number;
 }
 
 /**
  * monty_queue - stack to queue
  *
  * @stacks: pointer
- * @lnumber: current line
+ * @line_number: current line
  */
 
-void monty_queue(stack_s **stack, unsigned int lnumber)
+void monty_queue(stack_s **stacks, unsigned int line_number)
 {
 	(*stacks)->n = QUEUE;
-	(void)lnumber;
+	(void)line_number;
 }
