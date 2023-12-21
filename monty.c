@@ -114,6 +114,8 @@ int run(FILE *script_fd)
 	unsigned int line_number = 0, prev_tok_len = 0;
 	char *endptr;
 
+	stack_t *stacks = NULL;
+
 	if (init_stack(&stacks) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	while (getline(&line, &len, script_fd) != -1)
@@ -133,6 +135,7 @@ int run(FILE *script_fd)
 			free_token();
 			continue;
 		}
+
 		op_func = parse_stack_operation;
 
 		if ( op_func == NULL)
@@ -143,12 +146,13 @@ int run(FILE *script_fd)
 			break;
 		}
 		prev_tok_len = array_length();
-		op_func(stack_t, line_number);
+		op_func(&stacks, line_number);
 
 		while (array_length() != prev_tok_len)
 		{
 			if (op_toks && op_toks[prev_tok_len])
-				exit_status = atoi(*op_toks[prev_tok_len], &endptr , 10);
+			{
+				exit_status = atoi(op_toks + prev_tok_len);
 			else
 				exit_status = EXIT_FAILURE;
 			free_token();
