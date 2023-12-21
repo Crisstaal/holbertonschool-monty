@@ -66,7 +66,7 @@ void monty_queue(stack_t **stacks, unsigned int line_number);
 char get_integer(int j);
 int usage_error(void);
 int malloc_error(void);
-int f_open_error(char *filename);
+int f_open_error(const char *filename);
 int unknown_op(char *opcode, unsigned int line_number);
 int no_error(unsigned int line_number);
 int pop_error(unsigned int line_number);
