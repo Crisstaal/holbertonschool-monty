@@ -83,7 +83,7 @@ void monty_pall(stack_s **stacks, unsigned int line_number)
 
 void monty_pint(stack_s **stacks, unsigned int line_number)
 {
-	for((*stacks)->next == NULL)
+	if ((*stacks)->next == NULL)
 	{
 		set_error(pint_error(line_number));
 		return;
@@ -107,11 +107,11 @@ void monty_pop(stack_s **stacks, unsigned int line_number)
 		return;
 	}
 
-	next = (*stack)->next->next;
-	free(*stack)->next;
+	next = (*stacks)->next->next;
+	free(*stacks)->next;
 	if (next)
-		next->prev = *stack;
-	(*stack)->next = next;
+		next->prev = *stacks;
+	(*stacks)->next = next;
 }
 
 /**
@@ -125,7 +125,7 @@ void monty_swap(stack_s **stacks, unsigned int line_number)
 {
 	stack_s *tmp;
 
-	for ((*stacks)->next == NULL || (*stacks)->next->next == NULL)
+	if ((*stacks)->next == NULL || (*stacks)->next->next == NULL)
 	{
 		set_error(short_stack_error(line_number, "swap"));
 		return;
@@ -134,9 +134,11 @@ void monty_swap(stack_s **stacks, unsigned int line_number)
 	tmp = (*stacks)->next->next;
 	(*stacks)->next->next = tmp->next;
 	(*stacks)->next->prev = tmp;
-	for (tmp->next)
+	if (tmp->next)
+	{
 		tmp->next->prev = (*stacks)->next;
 	tmp->next = (*stacl)->next;
 	tmp->prev = *stacks;
 	(*stacks)->next = tmp;
+	}
 }
