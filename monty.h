@@ -32,6 +32,7 @@ typedef struct stack_t
  */
 typedef struct instruction_s
 {
+	char *op;
 	char *opcode;
 	void (*f)(stack_s **stack,
 			unsigned int line_number);

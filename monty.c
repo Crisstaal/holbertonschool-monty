@@ -114,12 +114,12 @@ int run(FILE *script_fd)
 	if (getline(&line, &len, script_fd) != -1)
 	{
 		line_number++;
-		op_toks - strtok(line, DELIM);
+		op_toks = strtok(line, DELIM);
 		if (op_toks == NULL)
 		{
 			if (empty(line, DELIM))
 				continue;
-			free_stack(&stacks);
+			free_stacks(&stacks);
 			return (malloc_error());
 		}
 		if (op_toks[0][0] == '#')
