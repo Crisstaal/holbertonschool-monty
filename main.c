@@ -1,6 +1,9 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <stddef.h>
+#include <stdio.h>
+#include "monty.h"
 
 char **op_toks = NULL;
 int run_monty(FILE *script_file);
