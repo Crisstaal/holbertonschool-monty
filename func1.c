@@ -11,17 +11,18 @@ void monty_push(stack_t **stacks, unsigned int line_number)
 	stack_t *tmp = NULL;
 	stack_t *new;
 	int b = 0;
-
-	new = malloc(sizeof(stack_t));
+	int malloc_err = malloc_error;
 
 	if (new == NULL)
 	{
-		set_error(&malloc_error());
+		set_error(&malloc_err);
 		return;
 	}
+	int pint_err = pint_error(line_number);
+
 	if (op_toks[1] == NULL)
 	{
-		set_error(&pint_error(line_number));
+		set_error(&pint_err);
 		return;
 	}
 	if (op_toks[1][b])
