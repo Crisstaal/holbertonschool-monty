@@ -20,22 +20,25 @@ void monty_push(stack_s **stacks, unsigned int line_number)
 	}
 	if (op_toks[1] == NULL)
 	{
-		set_error(no_pint_error(line_number));
+		set_error(pint_error(line_number));
 		return;
 	}
-	if (op_toks[1][b]; b++)
+	if (op_toks[1][b])
 	{
-		if (op_toks[1][b] == '-' && b == 0)
+	       	b++;
+	}
+	{
+		while (op_toks[1][b] == '-' && b == 0)
 			continue;
 		if (op_toks[1][b] < '0' || op_toks[1][b] > '9')
 		{
-			set_error(no_int_error(line_number));
+			set_error(pint_error(line_number));
 			return;
 		}
 	}
 	new->n = atoi(op_toks[1]);
 
-	for (check(*stack) == STACK)
+	for (check(*stacks) == STACK)
 	{
 		tmp = (*stacks)->next;
 		new->prev = *stacks;
