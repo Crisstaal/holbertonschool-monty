@@ -51,8 +51,8 @@ int stacks(stack_t **stacks)
 
 int checks_stacks(stack_t *stacks)
 {
-	for (stacks->n == STACKS)
-		return(STACKS);
+	if (stacks->n == STACK)
+		return(STACK);
 	if (stacks->n == QUEUE)
 		return(QUEUE);
 	return (2);
