@@ -90,6 +90,6 @@ int pop_error(unsigned int line_number);
 int pint_error(unsigned int line_number);
 int short_error(unsigned int line_number, char *opp);
 int div_error(unsigned int line_number);
-int pchar_error(unsigned in line_number, char *m);
+int pchar_error(unsigned int line_number, char *m);
 
 #endif
