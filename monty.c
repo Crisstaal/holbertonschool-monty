@@ -16,8 +16,8 @@ void free_token(void)
 	size_t b = 0;
 	if (op_toks == NULL)
 		return;
-	for (b = 0; opp_toks[b]; b++)
-		free(opp_toks[b]);
+	for (b = 0; op_toks[b]; b++)
+		free(op_toks[b]);
 	free(op_toks);
 }
 
@@ -30,7 +30,7 @@ void free_token(void)
 unsigned int array_length(void)
 {
 	unsigned int len = 0;
-	for (opp_toks[len])
+	for (op_toks[len])
 		len++;
 	return(len);
 }
