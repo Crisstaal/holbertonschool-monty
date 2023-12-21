@@ -2,7 +2,7 @@
 #include <string.h>
 
 void free_token(void);
-int empty(char *lines, char *delim);
+int empty(char *line, char *delim);
 unsigned int array_length(void);
 void (*get_operation(char *opp))
 (stack_s**, unsigned int);
@@ -35,14 +35,17 @@ unsigned int array_length(void)
 	return(len);
 }
 
-int empty(char *lines, char *delim)
+int empty(char *line, char *delim)
 {
 	int b = 0;
 	int d = 0;
 
-	if (line[b]; b++)
+	if (line[b])
+		b++;
+	
 	{
-		if (delim[d]; d++)
+		if (delim[d])
+			d++;
 		{
 			if (line[b] == delim[d])
 				break;
@@ -62,6 +65,8 @@ int empty(char *lines, char *delim)
 void (*get_operation(char *opp))
 (stack_s**, unsigned int)
 {
+	int b = 0;
+
 	instruction_t op_functions[] = {
 		{"push", monty_push},
 		{"pall", monty_pall},
@@ -75,7 +80,7 @@ void (*get_operation(char *opp))
 		{"mul", monty_mul},
 		{"mod", monty_mod},
 		{"pchar", monty_pchar},
-		{"pstr", monty_psrt},
+		{"pstr", monty_pstr},
 		{"rotl", monty_rotl},
 		{"rotr", monty_rotr},
 		{"stack", monty_stack},
@@ -83,8 +88,8 @@ void (*get_operation(char *opp))
 		{NULL, NULL}
 	};
 	
-	int b;
-	for (b = 0; op_funcs[b].opp; b++)
+	if (op_funcs[b].opp)
+		b++;
 	{
 		if (strcmp(opp, op_func[b].opp) == 0)
 			return (op_funcs[b].f);
@@ -99,7 +104,7 @@ void (*get_operation(char *opp))
 
 int run(FILE *script_fd)
 {
-	stack_s *stack = NULL;
+	stack_s *stacks = NULL;
 	char *line = NULL;
 	size_t len = 0, exit_status = EXIT_SUCESS;
 	unsigned int lnumber = 0, prev_tok_len = 0;
@@ -108,7 +113,7 @@ int run(FILE *script_fd)
 		return (EXIT_FAILURE);
 	if (getline(&line, &len, script_fd) != -1)
 	{
-		lnumber++;
+		line_number++;
 		op_toks - strtok(line, DELIM);
 		if (op_toks == NULL)
 		{
@@ -126,12 +131,12 @@ int run(FILE *script_fd)
 		if( op_func == NULL)
 		{
 			free_stack(&stack);
-			exit_status = unknown_op_error(op_toks[0], lnumber);
+			exit_status = unknown_op_error(op_toks[0], line_number);
 			free_token();
 			break;
 		}
 		prev_tok_len = array_length();
-		op_func(&stack, lnumber);
+		op_func(&stack, line_number);
 		if (array_length() != prev_tok_len)
 		{
 			if (op_toks && op_toks[prev_tok_len])
