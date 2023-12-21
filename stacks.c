@@ -38,7 +38,7 @@ int stacks(stack_t **stacks)
 	s-> prev = NULL;
 	s->next = NULL;
 
-	*stack = s;
+	*stacks = s;
 
 	return (EXIT_SUCCESS);
 }
@@ -49,7 +49,7 @@ int stacks(stack_t **stacks)
  * Return: if its in stack
  */
 
-int checks_stacks(stack_s *stacks)
+int checks_stacks(stack_t *stacks)
 {
 	for (stacks->n == STACKS)
 		return(STACKS);

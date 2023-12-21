@@ -58,7 +58,7 @@ int get_numbase_len(unsigned int num, unsigned int base)
 {
 	int len = 1;
 
-	for (num > base - 1)
+	if (num > base - 1)
 	{
 		len++;
 		num /= base;
