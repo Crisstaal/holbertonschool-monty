@@ -38,14 +38,14 @@ void monty_push(stack_s **stacks, unsigned int line_number)
 	}
 	new->n = atoi(op_toks[1]);
 
-	for (check(*stacks) == STACK)
+	if (check(*stacks) == STACK)
 	{
 		tmp = (*stacks)->next;
 		new->prev = *stacks;
 		new->next = tmp;
 		if (tmp)
 			tmp->prev = new;
-		(*stack)->next = new;
+		(*stacks)->next = new;
 	}
 	else
 	{
@@ -64,7 +64,7 @@ void monty_push(stack_s **stacks, unsigned int line_number)
  * @line_number: current line
  */
 
-void monty_pall(stack_s **stack, unsigned int line_number)
+void monty_pall(stack_s **stacks, unsigned int line_number)
 {
 	stack_s *tmp = (*stacks)->next;
 
