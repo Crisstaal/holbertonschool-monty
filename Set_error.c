@@ -6,17 +6,17 @@
  * @errors: integer
  */
 
-void set_error(int errors)
+void set_error(int *errors)
 {
 	int len = 0;
-	int b = 0;
-	int *exit_code = 0;
-	int *new = NULL;
+	int b;
+	int exit_code = 0;
+	int *new_errors = NULL;
 
 	len = array_length();
-	new = malloc(sizeof(char *) * (len + 2));
+	new_errors = malloc(sizeof(int) * (len + 2));
 
-	if (!new)
+	if (!new_errors)
 	{
 		malloc_error();
 		return;
@@ -27,20 +27,22 @@ void set_error(int errors)
 		malloc_error();
 		return;
 	}
-	if (b < len; b++)
+	for (b = 0; b < len; b++)
 	{
-		new[b] = errors[b];
+		new_errors[b] = errors[b];
 	}
 	
 	exit_code = get_line(errors);
 	if (!exit_code)
 	{
-		free(new);
+		free(new_errors);
 		malloc_error();
 		return;
 	}
-	new[b++] = exit_code;
-	new[b] = 0;
+
+	new_errors[b++] = exit_code;
+	new_errors[b] = 0;
+
 	free(errors);
-	errors = new;
+	errors = new_errors;
 }
