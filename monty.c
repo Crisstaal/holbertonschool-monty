@@ -61,12 +61,9 @@ int empty(char *line, char *delim)
  *
  * @opp: to be matched
  * Return: pointer
- */
-void (*get_operation(char *op))(stack_s**, unsigned int)
+*/
 {
-	int b = 0;
-
-	instruction_t op_functions[] = {
+instruction_t op_functions[] = {
 		{"push", monty_push},
 		{"pall", monty_pall},
 		{"pint", monty_pint},
@@ -87,12 +84,18 @@ void (*get_operation(char *op))(stack_s**, unsigned int)
 		{NULL, NULL}
 	};
 	
-	if (op_functions[b].op)
-		b++;
+void (*get_operation(char *op))(stacks_s**, unsigned int)
+{
+	int b = 0;
+
+	while (op_functions[b].opcode != NULL)
 	{
-		if (strcmp(op, op_functions[b].op) == 0)
+		if (strcmp(op, op_functions[b].opcode) == 0)
+		{
 			return (op_functions[b].f);
-	}
+		}
+		b++;
+}
 	return(NULL);
 }
 /**
