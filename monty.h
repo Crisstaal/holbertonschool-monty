@@ -33,7 +33,7 @@ typedef struct instruction_s
 {
 	char *opcode;
 	void (*f)(stack_s **stack,
-			unsigned int lnumber);
+			unsigned int line_number);
 }instruction_t;
 
 void free_stacks(stack_s **stacks);
@@ -44,51 +44,52 @@ unsigned int array_length(void);
 int run(FILE *script_fd);
 void set_error(int errors);
 void monty_push(stack_s **stacks,
-unsigned int lnumber);
+unsigned int line_number);
 void monty_pall(stack_s **stacks,
-unsigned int lnumber);
+unsigned int line_number);
 void monty_pint(stack_s **stacks,
-unsigned int lnumber);
+unsigned int line_number);
 void monty_pop(stack_s **stacks,
-unsigned int lnumber);
+unsigned int line_number);
 void monty_swap(stack_s **stacks,
-unsigned int lnumber);
+unsigned int line_number);
 void monty_add(stack_s **stacks,
-unsigned int lnumber);
+unsigned int line_number);
 void monty_nop(stack_s **stacks,
-unsigned int lnumber);
+unsigned int line_number);
 void monty_sub(stack_s **stacks,
-unsigned int lnumber);
+unsigned int line_number);
 void monty_div(stack_s **stacks,
-unsigned int lnumber);
+unsigned int line_number);
 void monty_mul(stack_s **stacks,
-unsigned int lnumber);
+unsigned int line_number);
 void monty_mod(stack_s **stacks,
-unsigned int lnumber);
+unsigned int line_number);
 void monty_pchar(stack_s **stacks,
-unsigned int lnumber);
+unsigned int line_number);
 void monty_pstr(stack_s **stacks,
-unsigned int lnumber);
+unsigned int line_number);
 void monty_rotl(stack_s **stacks,
-unsigned int lnumber);
+unsigned int line_number);
 void monty_rotr(stack_s **stacks,
-unsigned int lnumber);
+unsigned int line
+number);
 void monty_stack(stack_s **stacks,
-unsigned int lnumber);
+unsigned int line_number);
 void monty_queue(stack_s **stacks,
-unsigned int lnumber);
+unsigned int line_number);
 char **strtok(char *str, char *delim);
 char get_integer(int j);
 int using_error(void);
 int malloc_error(void);
 int f_open_error(char *filename);
 int unknown_opp(char *opcode,
-unsigned int lnumber);
-int no_error(unsigned int lnumber);
-int pop_error(unsigned int lnumber);
-int pint_error(unsigned int lnumber);
-int short_error(unsigned int lnumber, char *opp);
-int div_error(unsigned int lnumber);
-int pchar_error(unsigned in lnumber, char *m);
+unsigned int line_number);
+int no_error(unsigned int line_number);
+int pop_error(unsigned int line_number);
+int pint_error(unsigned int line_number);
+int short_error(unsigned int line_number, char *opp);
+int div_error(unsigned int line_number);
+int pchar_error(unsigned in line_number, char *m);
 
 #endif

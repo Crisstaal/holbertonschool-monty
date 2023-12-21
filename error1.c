@@ -3,8 +3,8 @@
 int usage_error(void);
 int f_open_error(char *filename);
 int malloc_error(void);
-int unknown_op_error(char *opcode, unsigned int lnumber);
-int no_int_error(unsigned int lnumber);
+int unknown_op_error(char *opcode, unsigned int line_number);
+int no_int_error(unsigned int line_number);
 
 /**
  * usage_error - prints usage error
@@ -45,24 +45,24 @@ int f_open_error(char *filename)
 /**
  * unknown_op_error - prints error
  * @opcode: opcode error
- * @lnumber: line numer
+ * @line_number: line number
  * Return: EXIT_FAILURE
  */
 
-int unknown_op_error(char *opcode, unsigned int lnumber)
+int unknown_op_error(char *opcode, unsigned int line_number)
 {
-	fprintf(stderr, "L%u: unknown instruction %s\n", lnumber, opcode);
+	fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
 	return (EXIT_FAILURE);
 }
 
 /**
  * no_int_error - prints error associated
- * @lnumber: line number
+ * @line_number: line number
  * Return: EXIT_FAILURE
  */
 
-int no_int_error(unsigned int lnumber)
+int no_int_error(unsigned int line_number)
 {
-	fprintf(stderr, "L%u: usage: push integer\n", line number);
+	fprintf(stderr, "L%u: usage: push integer\n", line_number);
 	return(EXIT_FAILURE);
 }
