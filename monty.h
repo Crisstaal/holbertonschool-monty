@@ -78,7 +78,6 @@ void monty_stack(stack_s **stacks,
 unsigned int line_number);
 void monty_queue(stack_s **stacks,
 unsigned int line_number);
-char **strtok(char *str, char *delim);
 char get_integer(int j);
 int using_error(void);
 int malloc_error(void);

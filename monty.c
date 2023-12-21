@@ -18,7 +18,7 @@ void free_token(void)
 		return;
 	for (b = 0; opp_toks[b]; b++)
 		free(opp_toks[b]);
-	free(opp_toks);
+	free(op_toks);
 }
 
 /**
