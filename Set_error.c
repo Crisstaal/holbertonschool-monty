@@ -8,11 +8,12 @@
 
 void set_error(int errors)
 {
-	int b;
+	size_t b;
 	int *new_errors = NULL;
 	char *line = NULL;
 	size_t len = 0;
-	size_t read = getline(&line, &len, stdin);
+	size_t line_len = 0;
+	size_t read = getline(&line, &len_line, stdin);
 
 	len = array_length();
 	new_errors = malloc(sizeof(int) * (len + 2));
@@ -34,7 +35,7 @@ void set_error(int errors)
 	}
 	
 
-	if (read == (ssize_t) -1)
+	if (read == -1)
 	{
 		free(new_errors);
 		free(line);
@@ -45,7 +46,7 @@ void set_error(int errors)
 	new_errors[b++] = read;
 	new_errors[b] = 0;
 
-	free(new_errors);
 	free(line);
-	errors = new_errors;
+	
+	int *errors_ptr = new_errors;
 }
