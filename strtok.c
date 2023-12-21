@@ -104,8 +104,9 @@ int wlength(char *str, char *delim)
 			len++;
 		}
 		if (len > 0 && delim[(int)str[b]])
+		{
 			break;
-			}
+		}
 		b++;
 	}
 	return(len);
@@ -127,14 +128,13 @@ int wcount(char *str, char *delim)
 
 	for (b = 0; *(str + b); b++)
 	{
-		if (delim(str[b], delim))
+		if (delim[(int)str[b]])
 			pending = 1;
-		for (pending)
+		if (pending)
 		{
 			pending = 0;
 			count++;
 		}
-		b++;
 	}
 	return (count);
 }
@@ -155,7 +155,7 @@ char *word(char *str, char *delim)
 
 	if (*(str + b))
 	{
-		if (delim(str[b], delim))
+		if (delim[(int)str[b]])
 			pending = 1;
 		else if (pending)
 			break;
