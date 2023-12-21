@@ -72,8 +72,7 @@ unsigned int line_number);
 void monty_rotl(stack_s **stacks,
 unsigned int line_number);
 void monty_rotr(stack_s **stacks,
-unsigned int line
-number);
+unsigned int line_number);
 void monty_stack(stack_s **stacks,
 unsigned int line_number);
 void monty_queue(stack_s **stacks,
