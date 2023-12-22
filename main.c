@@ -1,30 +1,53 @@
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <stddef.h>
-#include <stdio.h>
 #include "monty.h"
-
-char **op_toks = NULL;
+stack_t *head = NULL;
 
 /**
- * main - entry point
- * @argc: count
- * @argv: arguments
- * Return: EXIT_SUCCESS on success
+ * main - Entry Point
+ * @argc: Number of command line arguments.
+ * @argv: An array containing the arguments.
+ * Return: Always Zero.
  */
-int main (int argc, char **argv)
+int main(int argc, char **argv)
 {
-	FILE *script_fd = NULL;
-	int exit_code = EXIT_SUCCESS;
+	if (argc < 2 || argc > 2)
+		err(1);
+	open_file(argv[1]);
+	free_nodes();
+	return (0);
+}
 
+/**
+ * free_nodes - Frees nodes in the stack.
+ */
+void free_nodes(void)
+{
+	stack_t *tmp;
 
-	if (argc != 2)
-		return (usage_error());
+	if (head == NULL)
+		return;
 
-	script_fd = fopen(argv[1], "r");
-	if (script_fd == NULL)
-		return (f_open_error(argv[1]));
-	fclose(script_fd);
-	return(exit_code);
+	while (head != NULL)
+	{
+		tmp = head;
+		head = head->next;
+		free(tmp);
+	}
+}
+
+/**
+ * create_node - Createsa node.
+ * @n: Number
+ * Return: a pointer to the node
+ */
+stack_t *create_node(int n)
+{
+	stack_t *node;
+
+	node = malloc(sizeof(stack_t));
+	if (node == NULL)
+		err(4);
+	node->next = NULL;
+	node->prev = NULL;
+	node->n = n;
+	return (node);
 }

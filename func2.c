@@ -1,95 +1,96 @@
 #include "monty.h"
 
 /**
- * monty_add - adds two values at the top
- * @stacks: pointer
- * @line_number: current line
+ * nop - Does nothing.
+ * @stack: Pointer
+ * @line_number: Interger
  */
-
-void monty_add(stack_t **stacks, unsigned int line_number)
+void nop(stack_t **stack, unsigned int line_number)
 {
-	if ((*stacks)->next == NULL || (*stacks)->next->next == NULL)
-	{
-		set_error(short_stack_error(line_number, "add"));
-		return;
-	}
-	(*stacks)->next->next->n += (*stacks)->next->n;
+	(void)stack;
+	(void)line_number;
+}
 
-	monty_pop(stacks, line_number);
+
+/**
+ * swap_nodes - Swaps the top two elements of the stack.
+ * @stack: Pointer
+ * @line_number: Intger
+ */
+void swap_nodes(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp;
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+		more_err(8, line_number, "swap");
+	tmp = (*stack)->next;
+	(*stack)->next = tmp->next;
+	if (tmp->next != NULL)
+		tmp->next->prev = *stack;
+	tmp->next = *stack;
+	(*stack)->prev = tmp;
+	tmp->prev = NULL;
+	*stack = tmp;
 }
 
 /**
- * monty_sub - subtracts
- * @stacks: pointer
- * @line_number: current line
+ * add_nodes - Adds the top two elements of the stack.
+ * @stack: Pointer
+ * @line_number: Interger
  */
+void add_nodes(stack_t **stack, unsigned int line_number)
+{
+	int sum;
 
-void monty_sub(stack_t **stacks, unsigned int line_number)
-{
-	if((*stacks)->next == NULL || (*stacks)->next->next == NULL)
-	{
-		set_error(short_stack_error(line_number, "sub"));
-		return;
-	}
-	(*stacks)->next->next->n -= (*stacks)->next->n;
-	monty_pop(stacks, line_number);
-}
-/**
- * monty_div - division
- * @stacks: pointer
- * @line_number: current line
- */
-void monty_div(stack_t **stacks, unsigned int line_number)
-{
-	if ((*stacks)->next == NULL || (*stacks)->next->next == NULL)
-	{
-		set_error(short_stack_error(line_number, "div"));
-		return;
-	}
-	if ((*stacks)->next->n == 0)
-	{
-		set_error(div_error(line_number));
-		return;
-	}
-	(*stacks)->next->next->n /= (*stacks)->next->n;
-	monty_pop(stacks, line_number);
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+		more_err(8, line_number, "add");
+
+	(*stack) = (*stack)->next;
+	sum = (*stack)->n + (*stack)->prev->n;
+	(*stack)->n = sum;
+	free((*stack)->prev);
+	(*stack)->prev = NULL;
 }
 
-/**
- * monty_mul - multiplies
- * @stacks: pointer
- * @line_number: current line
- */
 
-void monty_mul(stack_t **stacks, unsigned int line_number)
+/**
+ * sub_nodes - Adds the top two elements of the stack.
+ * @stack: Pointer
+ * @line_number: Interger
+void sub_nodes(stack_t **stack, unsigned int line_number)
 {
-	if ((*stacks)->next == NULL || (*stacks)->next->next == NULL)
-	{
-		set_error(short_stack_error(line_number, "mul"));
-		return;
-	}
-	(*stacks)->next->next->n += (*stacks)->next->n;
-	monty_pop(stacks, line_number);
+	int sum;
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+
+		more_err(8, line_number, "sub");
+
+
+	(*stack) = (*stack)->next;
+	sum = (*stack)->n - (*stack)->prev->n;
+	(*stack)->n = sum;
+	free((*stack)->prev);
+	(*stack)->prev = NULL;
 }
 
-/**
- * monty_mod - modulus
- * @stacks: pointer
- * @line_number: current line
- */
 
-void monty_mod(stack_t **stacks, unsigned int line_number)
+/**
+ * div_nodes - Adds the top two elements of the stack.
+ * @stack: Pointer
+ * @line_number: Interger
+ */
+void div_nodes(stack_t **stack, unsigned int line_number)
 {
-	if ((*stacks)->next == NULL || (*stacks)->next->next == NULL)
-	{
-		set_error(short_stack_error(line_number, "mod"));
-		return;
-	}
-	if ((*stacks)->next->n == 0)
-	{
-		set_error(div_error(line_number));
-		return;
-	}
-	(*stacks)->next->next->n %= (*stacks)->next->n;
-	monty_pop(stacks, line_number);
+	int sum;
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+		more_err(8, line_number, "div");
+
+	if ((*stack)->n == 0)
+		more_err(9, line_number);
+	(*stack) = (*stack)->next;
+	sum = (*stack)->n / (*stack)->prev->n;
+	(*stack)->n = sum;
+	free((*stack)->prev);
+	(*stack)->prev = NULL;
 }

@@ -1,147 +1,99 @@
 #include "monty.h"
 
 /**
- * monty_push - pushes value
- * @stack: pointer
- * @line_number: line number
+ * pop_top - Adds a node 
+ * @stack: Pointer 
+ * @line_number: Interger
  */
-
-void monty_push(stack_t **stacks, unsigned int line_number)
+void pop_top(stack_t **stack, unsigned int line_number)
 {
-	stack_t *tmp = NULL;
-	stack_t *new;
-	int b = 0;
-	int malloc_err = malloc_error();
-	new = malloc(sizeof(stack_t));
+	stack_t *tmp;
 
-	if (new == NULL)
-	{
-		set_error(malloc_err);
-		return;
-	}
-	int pint_err = pint_error(line_number);
+	if (stack == NULL || *stack == NULL)
+		more_err(7, line_number);
 
-	if (op_toks[1] == NULL)
-	{
-		set_error(pint_err);
-		return;
-	}
-	if (op_toks[1][b])
-	{
-	       	b++;
-	}
-	{
-		while (op_toks[1][b] == '-' && b == 0)
-			continue;
-		if (op_toks[1][b] < '0' || op_toks[1][b] > '9')
-		{
-			set_error(pint_error(line_number));
-			return;
-		}
-	}
-	new->n = atoi(op_toks[1]);
-
-	if ((*stacks) == STACK)
-	{
-		tmp = (*stacks)->next;
-		new->prev = *stacks;
-		new->next = tmp;
-		if (tmp)
-			tmp->prev = new;
-		(*stacks)->next = new;
-	}
-	else
-	{
-		tmp = *stacks;
-		while (tmp->next)
-			tmp = tmp->next;
-		new->prev = tmp;
-		new->next = NULL;
-		tmp->next = new;
-	}
+	tmp = *stack;
+	*stack = tmp->next;
+	if (*stack != NULL)
+		(*stack)->prev = NULL;
+	free(tmp);
 }
 
 /**
- * monty_pall - prints value
- * @stacks: pointer
- * @line_number: current line
+ * print_top - Prints the top node of the stack.
+ * @stack: Pointer 
+ * @line_number: Interger 
  */
-
-void monty_pall(stack_t **stacks, unsigned int line_number)
+void print_top(stack_t **stack, unsigned int line_number)
 {
-	stack_t *tmp = (*stacks)->next;
+	if (stack == NULL || *stack == NULL)
+		more_err(6, line_number);
+	printf("%d\n", (*stack)->n);
+}
 
-	while (tmp)
+/**
+ * add_to_stack - Adds a node
+ * @new_node: Pointer
+ * @ln: Interger
+ */
+void add_to_stack(stack_t **new_node, __attribute__((unused))unsigned int ln)
+{
+	stack_t *tmp;
+
+	if (new_node == NULL || *new_node == NULL)
+		exit(EXIT_FAILURE);
+	if (head == NULL)
+	{
+		head = *new_node;
+		return;
+	}
+	tmp = head;
+	head = *new_node;
+	head->next = tmp;
+	tmp->prev = head;
+}
+
+/**
+ * print_stack - Adds a node
+ * @stack: Pointer 
+ * @line_number: Interger representing the line number of of the opcode.
+ */
+void print_stack(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp;
+
+	(void) line_number;
+	if (stack == NULL)
+		exit(EXIT_FAILURE);
+	tmp = *stack;
+	while (tmp != NULL)
 	{
 		printf("%d\n", tmp->n);
 		tmp = tmp->next;
 	}
-	(void)line_number;
-}
-/**
- * monty_pint - prints top value
- * @stacks: pointer
- * @line_number: current line
- */
-
-void monty_pint(stack_t **stacks, unsigned int line_number)
-{
-	if ((*stacks)->next == NULL)
-	{
-		set_error(pint_error(line_number));
-		return;
-	}
-	printf("%d\n", (*stacks)->next->n);
 }
 
-/**
- * monty_pop - removes top value
- *
- * @stacks: pointer
- * @line_number: current line
- */
-void monty_pop(stack_t **stacks, unsigned int line_number)
-{
-	stack_t *next = NULL;
-
-	if ((*stacks)->next == NULL)
-	{
-		set_error(pop_error(line_number));
-		return;
-	}
-
-	next = (*stacks)->next->next;
-	free(*stacks);
-	if (next)
-		next->prev = *stacks;
-	(*stacks)->next = next;
-}
 
 /**
- * monty_swap - swaps the top two values
- *
- * @stacks: pointer
- * @line_number: current line
+ * add_to_queue - Adds a node to the queue.
+ * @new_node: new node.
+ * @ln: Interger.
  */
-
-void monty_swap(stack_t **stacks, unsigned int line_number)
+void add_to_queue(stack_t **new_node, __attribute__((unused))unsigned int ln)
 {
 	stack_t *tmp;
 
-	if ((*stacks)->next == NULL || (*stacks)->next->next == NULL)
+	if (new_node == NULL || *new_node == NULL)
+		exit(EXIT_FAILURE);
+	if (head == NULL)
 	{
-		set_error(short_stack_error(line_number, "swap"));
+		head = *new_node;
 		return;
 	}
+	tmp = head;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
 
-	tmp = (*stacks)->next->next;
-	(*stacks)->next->next = tmp->next;
-	(*stacks)->next->prev = tmp;
-	if (tmp->next)
-	{
-		tmp->next->prev = (*stacks)->next;
-	tmp->next = (*stacks)->next;
-	tmp->prev = *stacks;
-	(*stacks)->next = tmp;
-	}
+	tmp->next = *new_node;
+	(*new_node)->prev = tmp;
 }
