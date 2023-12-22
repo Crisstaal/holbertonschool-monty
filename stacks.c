@@ -5,7 +5,6 @@
 void free_stacks(stack_t **stacks);
 int stacks(stack_t **stacks);
 int checks_stacks(stack_t *stacks);
-int malloc_error(void);
 /**
  * free_stracks - frees the stack
  * @stack: pointer
@@ -33,8 +32,8 @@ int stacks(stack_t **stacks)
 {
 	stack_t *s;
 	s = malloc(sizeof(stack_t));
+	
 	if (s == NULL)
-		return (malloc_error());
 	s->n = STACK;
 	s-> prev = NULL;
 	s->next = NULL;
