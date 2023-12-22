@@ -1,10 +1,11 @@
 #include "monty.h"
 #include <string.h>
+#include <stdlib.h>
 
 void free_stacks(stack_t **stacks);
 int stacks(stack_t **stacks);
 int checks_stacks(stack_t *stacks);
-
+int malloc_error(void);
 /**
  * free_stracks - frees the stack
  * @stack: pointer
