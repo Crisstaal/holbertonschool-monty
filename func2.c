@@ -57,6 +57,7 @@ void add_nodes(stack_t **stack, unsigned int line_number)
  * sub_nodes - Adds the top two elements of the stack.
  * @stack: Pointer
  * @line_number: Interger
+ */
 void sub_nodes(stack_t **stack, unsigned int line_number)
 {
 	int sum;

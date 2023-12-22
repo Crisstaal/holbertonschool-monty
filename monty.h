@@ -3,11 +3,15 @@
 
 #include <stdio.h>
 #include <unistd.h>
+#include <sys/types.h>
+#include <fcntl.h>
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <stdarg.h>
 
+#define STACK 1
+#define QUEUE 2
 
 
 /**
@@ -70,6 +74,7 @@ void err(int error_code, ...);
 void more_err(int error_code, ...);
 void string_err(int error_code, ...);
 void rotr(stack_t **, unsigned int);
+int malloc_error(void);
 
 
 #endif
