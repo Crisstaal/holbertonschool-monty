@@ -25,7 +25,7 @@ void open_file(char *file_name)
 }
 
 /**
- * read_file - Reads the content of a file line by line.
+ * read_file - Reads the content of a file.
  * @fd: Pointer to a file descriptor of an open file
  */
 
@@ -117,7 +117,6 @@ void find_func(char *opcode, char *value, int ln, int format)
 
 	if (opcode[0] == '#')
 		return;
-	/*Iterates through list to find the right function*/
 	for (flag = 1, i = 0; func_list[i].opcode != NULL; i++)
 	{
 		/*When 0 found the right opcode*/
